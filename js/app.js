@@ -80,13 +80,55 @@
   // ---- Build navigation ----
   function buildNav() {
     topNav.innerHTML = "";
+    const search = el("input", {
+      type: "text", id: "navSearch", placeholder: "Search 25 tools\u2026",
+      autocomplete: "off",
+      oninput: function (e) { filterHome(e.target.value); }
+    });
+    search.classList.add("nav-search");
+    topNav.appendChild(search);
+
     footerNav.innerHTML = "";
-    order.forEach(id => {
-      const t = tools[id];
-      const a = el("a", { href: "#/tool/" + id }, t.title.split(" ")[0]);
-      topNav.appendChild(a);
-      const fa = el("a", { href: "#/tool/" + id }, t.title);
-      footerNav.appendChild(fa);
+    footerNav.classList.add("footer-nav-grid");
+    const byCat = {};
+    order.forEach(function (id) {
+      const cat = tools[id].category || "other";
+      if (!byCat[cat]) byCat[cat] = [];
+      byCat[cat].push(id);
+    });
+    ["pdf", "image", "text", "dev"].forEach(function (cat) {
+      if (!byCat[cat]) return;
+      const meta = categories[cat] || {};
+      const col = el("div", { class: "footer-cat-group" });
+      col.appendChild(el("h5", {}, (meta.icon || "") + " " + (meta.label || cat)));
+      byCat[cat].forEach(function (id) {
+        col.appendChild(el("a", { href: "#/tool/" + id }, tools[id].title));
+      });
+      footerNav.appendChild(col);
+    });
+  }
+
+  function filterHome(q) {
+    q = (q || "").trim().toLowerCase();
+    document.querySelectorAll(".tool-card").forEach(function (card) {
+      const title = (card.querySelector("h3") ? card.querySelector("h3").textContent : "").toLowerCase();
+      const desc = (card.querySelector("p") ? card.querySelector("p").textContent : "").toLowerCase();
+      const match = !q || title.indexOf(q) !== -1 || desc.indexOf(q) !== -1;
+      card.style.display = match ? "" : "none";
+    });
+    document.querySelectorAll(".section-title").forEach(function (title) {
+      let next = title.nextElementSibling;
+      let anyVisible = false;
+      while (next && !next.classList.contains("section-title") && !next.classList.contains("faq")) {
+        if (next.classList.contains("tool-grid")) {
+          const cards = next.querySelectorAll(".tool-card");
+          for (let i = 0; i < cards.length; i++) { if (cards[i].style.display !== "none") { anyVisible = true; break; } }
+        }
+        next = next.nextElementSibling;
+      }
+      title.style.display = anyVisible ? "" : "none";
+      const grid = title.nextElementSibling;
+      if (grid && grid.classList.contains("tool-grid")) grid.style.display = anyVisible ? "" : "none";
     });
   }
 
@@ -175,7 +217,7 @@
       el("a", { class: "back", href: "#/", onclick: (e) => { e.preventDefault(); goHome(); } }, "← All tools"),
     ));
     view.appendChild(el("h1", {}, t.icon + " " + t.title));
-    view.appendChild(el("p", { class: "tool-lead" }, t.longDesc || t.desc));
+    view.appendChild(el("p", { class: "tool-lead" }, t.desc));
 
     const errorBox = el("div", { class: "error-box" });
     const progress = el("div", { class: "progress" }, el("div", { class: "bar" }));
