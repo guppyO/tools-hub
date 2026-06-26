@@ -1,69 +1,50 @@
-# PDF.tools
+# Tools Hub
 
-A free, fast, **100% client-side** PDF toolkit. Merge, split, compress, convert,
-rotate, organize and watermark PDFs - all processing happens in the user's browser,
-so files are never uploaded. Zero backend = zero hosting cost.
+25+ free, fast, **100% client-side** online tools. PDF, image, text and developer utilities — all processing happens in the browser, so files are never uploaded. Zero backend = zero hosting cost.
+
+**Live:** https://guppyo.github.io/tools-hub/
+
+## Tools (25)
+
+### PDF (8)
+Merge · Split · Compress · PDF to JPG · JPG to PDF · Rotate · Delete Pages · Watermark
+
+### Image (5)
+Image Compressor · Image Converter · Image Resizer · QR Code Generator · Image to Base64
+
+### Text (5)
+Word Counter · Case Converter · Lorem Ipsum · Text Diff · Slug Generator
+
+### Developer (7)
+JSON Formatter · Base64 Encode/Decode · URL Encode/Decode · JWT Decoder · Hash Generator · Color Converter · UUID Generator
 
 ## Why this makes money
-
-- **No operating cost.** Static site on Vercel/Netlify/Cloudflare Pages = $0/mo.
-- **Privacy is the hook.** "Files never leave your device" converts and ranks.
-- **Built-in monetization:** ads, donations, and a one-time Pro upsell.
-- **High-intent search traffic.** "merge pdf", "compress pdf", "jpg to pdf"
-  get millions of searches/month.
-
-## Tools included
-
-| Tool | What it does |
-|------|--------------|
-| Merge PDF | Combine multiple PDFs into one |
-| Split PDF | Extract a page range |
-| Compress PDF | Shrink file size (rasterize) |
-| PDF to JPG | Export each page as an image |
-| JPG to PDF | Combine images into a PDF |
-| Rotate PDF | Rotate all pages 90/180/270 |
-| Delete Pages | Visually remove pages |
-| Watermark PDF | Stamp text across all pages |
+- **Zero operating cost** — static site, free hosting on GitHub Pages.
+- **Privacy hook** — "files never leave your device" converts and ranks.
+- **Broad keyword coverage** — 25 tools = 25 keyword targets.
+- **Monetization built in** — ad slots, donation CTA, Pro upsell modal.
 
 ## Run locally
-
-Just open `index.html` in a browser. Or serve it:
-
 ```bash
 npx serve .
 # or
 python -m http.server 8080
 ```
 
-## Deploy (free)
-
-### Vercel
-```bash
-npm i -g vercel
-vercel        # follow prompts, framework = Other, output dir = .
-```
-
-### Netlify
-Drag the folder into https://app.netlify.com/drop
-
-### Cloudflare Pages
-- Connect repo, build command: (none), output dir: `.`
+## Deploy
+Already deployed via GitHub Pages on push to `main`. Configured at:
+https://github.com/guppyO/tools-hub/settings/pages
 
 ## Monetization setup
-
-1. **Ads** - Open `index.html`, find `<!-- AD SLOT -->`, paste your AdSense
-   (or Ezoic / Mediavine once you hit traffic) snippet.
-2. **Donations** - Edit the `Buy me a coffee` link in the CTA band.
-3. **Pro upsell** - In `js/app.js` find `openProModal`, set the Gumroad/Stripe link.
-
-## Getting traffic
-
-- Submit `sitemap.xml` to Google Search Console.
-- Build backlinks: Reddit, Product Hunt, Hacker News, dev forums.
-- Write one SEO landing page per tool keyword over time.
+1. **Ads** — `index.html`, find `<!-- AD SLOT -->`, paste AdSense snippet.
+2. **Donations** — edit the "Buy me a coffee" link in the CTA band.
+3. **Pro** — `js/app.js` → `openProModal`, set Gumroad/Stripe link.
 
 ## Tech
-
-- `pdf-lib` (create/edit PDFs) + `pdf.js` (render pages) via CDN.
+- `pdf-lib` + `pdf.js` (PDF) + `qrcode` — all via CDN.
 - Vanilla JS SPA, no build step.
-- ~30 KB of custom JS. Loads instantly.
+- ~80 KB custom code across 5 JS files.
+
+## Traffic
+- Sitemap submitted to Google Search Console.
+- Each tool targets a high-intent search keyword.

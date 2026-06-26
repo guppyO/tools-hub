@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDF.tools — Free & Private PDF Merger, Compressor, Converter | All in your browser</title>
-<meta name="description" content="Free online PDF tools that run entirely in your browser. Merge, split, compress, convert, rotate, watermark and edit PDFs. Your files never leave your device — 100% private, no upload, no sign-up.">
-<meta name="keywords" content="pdf merger, pdf compressor, pdf splitter, pdf to jpg, jpg to pdf, rotate pdf, delete pdf pages, free pdf tools, online pdf editor, private pdf">
+<title>Free Tools Hub — 25+ PDF, Image, Text & Developer Tools | 100% Private</title>
+<meta name="description" content="25+ free online tools for PDF, images, text and developers. Merge PDFs, compress images, generate QR codes, format JSON, convert files and more - all 100% private, processed in your browser, no upload, no sign-up.">
+<meta name="keywords" content="pdf merger, pdf compressor, image compressor, qr code generator, json formatter, base64 encode decode, uuid generator, word counter, slug generator, jwt decoder, free online tools, browser tools">
 <meta name="author" content="PDF.tools">
 <meta name="robots" content="index, follow">
 
 <!-- Open Graph / social -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="PDF.tools — Free & Private PDF Toolkit">
-<meta property="og:description" content="Merge, split, compress & convert PDFs. 100% in your browser. Your files never leave your device.">
+<meta property="og:title" content="Free Tools Hub — 25+ Private Online Tools">
+<meta property="og:description" content="PDF, image, text and developer tools. 100% private - everything runs in your browser, nothing is uploaded.">
 <meta property="og:image" content="assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -21,6 +21,20 @@
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="./css/style.css">
+
+<!-- Structured data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Free Tools Hub",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any (browser-based)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "25+ free PDF, image, text and developer tools that run entirely in your browser. 100% private - no uploads.",
+  "featureList": "PDF merge, split, compress, convert; Image compress, convert, resize, QR codes; Word counter, case converter, JSON formatter, Base64, UUID, JWT decoder, hash generator"
+}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -77,7 +91,16 @@
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
 <script>if (window.pdfjsLib) { pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js'; }</script>
 
+<!-- QR code + extras -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
+<!-- Tool modules -->
+
+<!-- App core then tool modules (order matters) -->
 <script src="./js/app.js"></script>
 <script src="./js/tools.js"></script>
+<script src="./js/tools-image.js"></script>
+<script src="./js/tools-text.js"></script>
+<script src="./js/tools-dev.js"></script>
 </body>
 </html>

@@ -51,7 +51,7 @@
 
   // 1) MERGE PDF
   register("merge", {
-    title: "Merge PDF", icon: "🔗",
+    title: "Merge PDF", icon: "🔗", category: "pdf",
     desc: "Combine multiple PDFs into one, in any order.",
     longDesc: "Combine two or more PDF files into a single document. Reorder files with the up/down buttons.",
     render(ctx) {
@@ -134,7 +134,7 @@
 
   // 2) SPLIT / EXTRACT
   register("split", {
-    title: "Split PDF", icon: "✂️",
+    title: "Split PDF", icon: "✂️", category: "pdf",
     desc: "Extract a page range or split into separate files.",
     longDesc: "Extract specific pages or a page range from a PDF. Use ranges (1-3) and single pages (5), separated by commas.",
     render(ctx) {
@@ -190,7 +190,7 @@
 
   // 3) COMPRESS
   register("compress", {
-    title: "Compress PDF", icon: "🗜️",
+    title: "Compress PDF", icon: "🗜️", category: "pdf",
     desc: "Reduce PDF file size with adjustable quality.",
     longDesc: "Shrink large PDFs by rasterizing pages to optimized images. Great for email and uploads.",
     render(ctx) {
@@ -271,7 +271,7 @@
 
   // 4) PDF TO IMAGES
   register("pdf-to-images", {
-    title: "PDF to JPG", icon: "🖼️",
+    title: "PDF to JPG", icon: "🖼️", category: "pdf",
     desc: "Convert each PDF page into a JPG or PNG image.",
     longDesc: "Turn a PDF into a set of images - one per page. Download them individually or all at once.",
     render(ctx) {
@@ -353,7 +353,7 @@
 
   // 5) IMAGES TO PDF
   register("images-to-pdf", {
-    title: "JPG to PDF", icon: "📕",
+    title: "JPG to PDF", icon: "📕", category: "pdf",
     desc: "Convert JPG/PNG images into a single PDF.",
     longDesc: "Combine images (JPG, PNG, WebP) into one PDF - perfect for documents, receipts, or photo albums.",
     render(ctx) {
@@ -416,7 +416,7 @@
 
   // 6) ROTATE
   register("rotate", {
-    title: "Rotate PDF", icon: "🔄",
+    title: "Rotate PDF", icon: "🔄", category: "pdf",
     desc: "Rotate all pages or fix sideways PDFs.",
     longDesc: "Rotate every page in a PDF by 90, 180 or 270 degrees. Great for fixing scans that came out sideways.",
     render(ctx) {
@@ -472,7 +472,7 @@
 
   // 7) ORGANIZE / DELETE PAGES
   register("organize", {
-    title: "Delete Pages", icon: "🗂️",
+    title: "Delete Pages", icon: "🗂️", category: "pdf",
     desc: "Visually remove or rearrange pages.",
     longDesc: "See thumbnails of every page, then delete the ones you don't need. Everything stays private.",
     render(ctx) {
@@ -542,7 +542,7 @@
 
   // 8) WATERMARK
   register("watermark", {
-    title: "Watermark PDF", icon: "💧",
+    title: "Watermark PDF", icon: "💧", category: "pdf",
     desc: "Stamp text across every page.",
     longDesc: "Add a diagonal text watermark (like CONFIDENTIAL or DRAFT) to every page of your PDF.",
     render(ctx) {

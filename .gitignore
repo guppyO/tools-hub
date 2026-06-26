@@ -3,3 +3,13 @@ node_modules/
 .DS_Store
 *.log
 .vercel
+
+serve.cjs
+test*.cjs
+shot*.cjs
+shot*.png
+test-img*
+package.json
+package-lock.json
+node_modules/
+*.log

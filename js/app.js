@@ -90,49 +90,14 @@
     });
   }
 
-  // ---- Home page ----
-  function renderHome() {
-    app.innerHTML = "";
-    const hero = el("section", { class: "hero" },
-      el("h1", { html: 'All your <span class="grad">PDF tools</span> in one place' }),
-      el("p", { class: "sub" }, "Merge, split, compress, convert and edit PDFs — fast, free and 100% private. Your files are processed right in your browser and never uploaded anywhere."),
-      el("div", { class: "badges" },
-        el("span", { class: "badge" }, "🔒 100% private"),
-        el("span", { class: "badge" }, "⚡ No sign-up"),
-        el("span", { class: "badge" }, "♾️ Unlimited"),
-        el("span", { class: "badge" }, "💸 Free forever")
-      ),
-      el("div", { class: "trust" },
-        el("span", {}, "📦 No upload to servers"),
-        el("span", {}, "🖥️ Works offline after load"),
-        el("span", {}, "🌍 Used worldwide")
-      )
-    );
-    app.appendChild(hero);
-
-    app.appendChild(el("h2", { class: "section-title" }, "PDF tools"));
-    const grid = el("div", { class: "tool-grid" });
-    order.forEach(id => {
-      const t = tools[id];
-      grid.appendChild(el("div", { class: "tool-card", onclick: () => { location.hash = "#/tool/" + id; } },
-        el("div", { class: "ico" }, t.icon),
-        el("h3", {}, t.title),
-        el("p", {}, t.desc),
-        el("div", { class: "arrow" }, "→")
-      ));
-    });
-    app.appendChild(grid);
-
-    // SEO FAQ block
-    app.appendChild(el("section", { class: "faq" },
-      el("h2", { class: "section-title" }, "Frequently asked questions"),
-      faq("Is it really free?", "Yes. Every tool on PDF.tools is completely free with no limits on the number of files or pages. We're supported by optional donations and unobtrusive ads."),
-      faq("Are my PDF files uploaded to a server?", "No. All processing happens locally in your browser using JavaScript. Your files never leave your device, which makes these tools safe for confidential documents."),
-      faq("Do I need to install anything?", "No installation required. Just open a tool in any modern browser (Chrome, Firefox, Safari, Edge) and you're ready to go. It even works on your phone."),
-      faq("Does it work on mobile?", "Yes. The tools are fully responsive and work on iOS and Android devices."),
-      faq("Can I use this offline?", "Once the page is loaded, processing works without an internet connection because everything runs in your browser.")
-    ));
-  }
+  // ---- Category metadata ----
+  const categories = {
+    pdf:    { label: "PDF",       icon: "\u{1F4D5}" },
+    image:  { label: "Image",     icon: "\u{1F5BC}\uFE0F" },
+    text:   { label: "Text",      icon: "\u{1F4DD}" },
+    dev:    { label: "Developer", icon: "\u{2699}\uFE0F" }
+  };
+  window.PDFT.categories = categories;
 
   function faq(q, a) {
     const d = el("details", {},
@@ -142,6 +107,62 @@
     d.setAttribute("itemscope", "");
     d.setAttribute("itemtype", "https://schema.org/Question");
     return d;
+  }
+
+  // ---- Home page ----
+  function renderHome() {
+    app.innerHTML = "";
+    const hero = el("section", { class: "hero" },
+      el("h1", { html: 'Every <span class="grad">free tool</span> you need' }),
+      el("p", { class: "sub" }, "PDF, image, text and developer tools that run entirely in your browser. Free, fast and 100% private - your files never leave your device."),
+      el("div", { class: "badges" },
+        el("span", { class: "badge" }, "\u{1F512} 100% private"),
+        el("span", { class: "badge" }, "\u26A1 No sign-up"),
+        el("span", { class: "badge" }, "\u2728 20+ tools"),
+        el("span", { class: "badge" }, "\u{1F4B8} Free forever")
+      ),
+      el("div", { class: "trust" },
+        el("span", {}, "\u{1F4E6} No upload to servers"),
+        el("span", {}, "\u{1F5A5}\uFE0F Works offline after load"),
+        el("span", {}, "\u{1F30D} Used worldwide")
+      )
+    );
+    app.appendChild(hero);
+
+    // group tools by category
+    const byCat = {};
+    order.forEach(id => {
+      const t = tools[id];
+      const cat = t.category || "other";
+      if (!byCat[cat]) byCat[cat] = [];
+      byCat[cat].push(id);
+    });
+    const catOrder = ["pdf", "image", "text", "dev", "other"];
+    catOrder.forEach(cat => {
+      if (!byCat[cat]) return;
+      const meta = categories[cat] || { label: cat, icon: "\u{1F9F0}" };
+      app.appendChild(el("h2", { class: "section-title" }, meta.icon + " " + meta.label + " tools"));
+      const grid = el("div", { class: "tool-grid" });
+      byCat[cat].forEach(id => {
+        const t = tools[id];
+        grid.appendChild(el("div", { class: "tool-card", onclick: () => { location.hash = "#/tool/" + id; } },
+          el("div", { class: "ico" }, t.icon),
+          el("h3", {}, t.title),
+          el("p", {}, t.desc),
+          el("div", { class: "arrow" }, "\u2192")
+        ));
+      });
+      app.appendChild(grid);
+    });
+
+    app.appendChild(el("section", { class: "faq" },
+      el("h2", { class: "section-title" }, "Frequently asked questions"),
+      faq("Is it really free?", "Yes. Every tool here is completely free with no limits on the number of files or uses. We are supported by optional donations and unobtrusive ads."),
+      faq("Are my files uploaded to a server?", "No. All processing happens locally in your browser using JavaScript. Your files never leave your device, which makes these tools safe for confidential documents."),
+      faq("Do I need to install anything?", "No installation required. Just open a tool in any modern browser (Chrome, Firefox, Safari, Edge) and you are ready to go. It works on your phone too."),
+      faq("Does it work on mobile?", "Yes. The tools are fully responsive and work on iOS and Android devices."),
+      faq("Can I use this offline?", "Once the page is loaded, processing works without an internet connection because everything runs in your browser.")
+    ));
   }
 
   // ---- Tool workspace shell ----
