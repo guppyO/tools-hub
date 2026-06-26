@@ -13,3 +13,8 @@ package.json
 package-lock.json
 node_modules/
 *.log
+
+prod-final.png
+*.cjs
+!netlify.toml
+!vercel.json
