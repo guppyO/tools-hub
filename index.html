@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF.tools — Free & Private PDF Merger, Compressor, Converter | All in your browser</title>
+<meta name="description" content="Free online PDF tools that run entirely in your browser. Merge, split, compress, convert, rotate, watermark and edit PDFs. Your files never leave your device — 100% private, no upload, no sign-up.">
+<meta name="keywords" content="pdf merger, pdf compressor, pdf splitter, pdf to jpg, jpg to pdf, rotate pdf, delete pdf pages, free pdf tools, online pdf editor, private pdf">
+<meta name="author" content="PDF.tools">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="PDF.tools — Free & Private PDF Toolkit">
+<meta property="og:description" content="Merge, split, compress & convert PDFs. 100% in your browser. Your files never leave your device.">
+<meta property="og:image" content="assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://pdftools.example.com/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%234f46e5'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#/" class="brand" aria-label="PDF.tools home">
+      <span class="brand-mark">P</span>
+      <span class="brand-name">PDF<span class="brand-dot">.</span>tools</span>
+    </a>
+    <nav class="top-nav" id="topNav" aria-label="Tools"></nav>
+    <div class="header-cta">
+      <a href="#donate" class="btn btn-ghost btn-sm">❤ Support us</a>
+    </div>
+  </div>
+</header>
+
+<main id="app" class="container" role="main"></main>
+
+<!-- AD SLOT: replace with your AdSense / Ezoic code -->
+<aside class="ad-slot container" aria-label="Advertisement" id="adSlotBottom">
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+  <div class="ad-placeholder">Ad space (add Google AdSense here)</div>
+</aside>
+
+<section class="cta-band" id="donate">
+  <div class="container cta-inner">
+    <div>
+      <h2>Found this useful? 😊</h2>
+      <p>All tools are free and run privately in your browser. If they saved you time, a small tip keeps the servers (and coffee) running.</p>
+    </div>
+    <div class="cta-actions">
+      <!-- Replace with your Buy Me a Coffee / Ko-fi / Stripe link -->
+      <a href="https://www.buymeacoffee.com/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">☕ Buy me a coffee</a>
+      <a href="#/" class="btn btn-outline btn-lg" id="proCta">⚡ Go Pro — unlimited</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <span class="brand-name">PDF<span class="brand-dot">.</span>tools</span>
+      <p class="footer-tag">Fast, private PDF tools that run entirely in your browser.</p>
+    </div>
+    <nav class="footer-col footer-links" id="footerNav" aria-label="Footer tools"></nav>
+    <div class="footer-col">
+      <p class="footer-note">🔒 <strong>100% private.</strong> Files are processed locally and never uploaded.</p>
+      <p class="footer-note">© <span id="year"></span> PDF.tools. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Core libraries (CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script>if (window.pdfjsLib) { pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js'; }</script>
+
+<script src="./js/app.js"></script>
+<script src="./js/tools.js"></script>
+</body>
+</html>
